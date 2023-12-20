@@ -30,9 +30,9 @@ useEffect(() => {
   getData()
 }, [resCount])
 
-console.log(resData)
-console.log(resCount)
-console.log(new Date('2023/12/23').toLocaleDateString())
+//console.log(resData)
+//console.log(resCount)
+//console.log(new Date().toLocaleDateString())
   return (
     <div className='app'>
       <Header>

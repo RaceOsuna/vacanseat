@@ -13,9 +13,13 @@ nav * {
 }
 
 .layout {
-  width: 450px;
+  width: 600px;
 }
 
 nav div i {
   margin: 0 20px;
+}
+
+@media screen and (min-width: 768px) {
+  
 }

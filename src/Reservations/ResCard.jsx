@@ -16,7 +16,7 @@ export default function ResCard(props) {
   }
 
   const formattedPhone = phoneFormat(props.res.phone)
-  console.log('phone', formattedPhone)
+  // console.log('phone', formattedPhone)
 
   return (
     <div className='reservation-card'>
