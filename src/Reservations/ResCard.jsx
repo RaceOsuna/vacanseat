@@ -1,14 +1,36 @@
 import './Reservations.css';
 
-export default function ResCard({name, phone, date, partySize, notes, isComplete}) {
+export default function ResCard(props) {
+  
+  const phoneFormat = (input) => {
+    // if(!input || isNaN(input)) return `input must be a number was sent ${input}`
+    if(typeof(input) !== 'string') input = input.toString()
+    if(input.length === 10){
+      return input.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+    } else if(input.length < 10) {
+      return 'was not supplied enough numbers please pass a 10 digit number'
+    } else if(input.length > 10) {
+      return 'was supplied too many numbers please pass a 10 digit number'
+    }else{
+      return 'something went wrong'
+    }
+  }
+
+  const formattedPhone = phoneFormat(props.res.phone)
+  console.log('phone', formattedPhone)
+
   return (
     <div className='reservation-card'>
-      <div>{date}</div>
-      <div>
-        <h4>{name}</h4>
-        <p>{phone}</p>
+      <div className='grip-dots'>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
       </div>
-      <div>{partySize}</div>
+      <div className='contact'>
+        <h4>{props.res.name}</h4>
+        <p>{formattedPhone}</p>
+      </div>
+      <div className='party-size'>
+        {props.res.partySize}
+      </div>
     </div>
   )
 }

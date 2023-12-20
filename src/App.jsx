@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { initializeApp } from "firebase/app";
 import { collection, doc, addDoc, getFirestore, getDocs} from "firebase/firestore"
 import { firebaseConfig } from './firebaseConfig';
+import Reservations from './Reservations/Reservations';
 
 function App() {
 
@@ -28,12 +29,12 @@ useEffect(() => {
   getData()
 }, [resCount])
 
-
 console.log(resData)
 console.log(resCount)
+console.log(new Date('2023/12/23').toLocaleDateString())
   return (
     <>
-     
+     {resData.length && <Reservations resData={resData} />}
     </>
   )
 }
