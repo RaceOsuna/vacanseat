@@ -3,7 +3,6 @@ import './Reservations.css';
 export default function ResCard(props) {
   
   const phoneFormat = (input) => {
-    // if(!input || isNaN(input)) return `input must be a number was sent ${input}`
     if(typeof(input) !== 'string') input = input.toString()
     if(input.length === 10){
       return input.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
@@ -25,8 +24,14 @@ export default function ResCard(props) {
         <i class="fa-solid fa-ellipsis-vertical"></i>
       </div>
       <div className='contact'>
-        <h4>{props.res.name}</h4>
-        <p>{formattedPhone}</p>
+        <div>
+          <p>7:00</p>
+          <h4>{props.res.name}</h4>
+        </div>
+      </div>
+      <div className='details'>
+          <p>{formattedPhone}</p>
+          <p>notes</p>
       </div>
       <div className='party-size'>
         {props.res.partySize}

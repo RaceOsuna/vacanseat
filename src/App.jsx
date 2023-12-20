@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import { collection, doc, addDoc, getFirestore, getDocs} from "firebase/firestore"
 import { firebaseConfig } from './firebaseConfig';
 import Reservations from './Reservations/Reservations';
+import Header from './Header/Header';
 
 function App() {
 
@@ -33,9 +34,11 @@ console.log(resData)
 console.log(resCount)
 console.log(new Date('2023/12/23').toLocaleDateString())
   return (
-    <>
-     {resData.length && <Reservations resData={resData} />}
-    </>
+    <div className='app'>
+      <Header>
+        <Reservations resData={resData} />
+      </Header>
+    </div>
   )
 }
 

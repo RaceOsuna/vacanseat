@@ -1,0 +1,21 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgb(34, 34, 34);
+  position: sticky;
+  top: 0;
+}
+
+nav * {
+  background-color: rgb(35, 35, 35);
+}
+
+.layout {
+  width: 450px;
+}
+
+nav div i {
+  margin: 0 20px;
+}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Open+Sans:wght@700&family=Permanent+Marker&family=Poppins:wght@300&family=Source+Code+Pro&display=swap');
+
 .reservations-container {
   width: 100%;
   display: flex;
@@ -5,10 +7,11 @@
 
 .reservation-card {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border: 4px solid rgb(154, 154, 154);
+  border: 2px solid rgb(154, 154, 154);
   border-style:ridge;
+  border-radius: 5px;
+  height: 65px;
 }
 
 .contact {
@@ -16,6 +19,8 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  margin-right: auto;
+  font-size: large;
 }
 
 .contact p {
@@ -26,13 +31,23 @@
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-left: 2px solid rgb(154, 154, 154);;
-  padding: 15px;
+  padding: 15px 0;
+  width: 45px;
+  font-size: larger;
+  font-family: swap
 }
 
 .grip-dots {
   width:30px;
+  margin: 0 10px;
   display: flex;
   justify-content: center;
   cursor: pointer;
+}
+
+.details {
+  font-size: small;
+  margin-right: 15px;
 }
