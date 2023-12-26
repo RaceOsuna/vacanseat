@@ -1,0 +1,45 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgb(34, 34, 34);
+  position: sticky;
+  top: 0;
+}
+
+nav * {
+  background-color: rgb(35, 35, 35);
+}
+
+.layout {
+  width: 600px;
+}
+
+nav div i {
+  margin: 0 20px;
+}
+
+.calander {
+  border: none;
+  color-scheme: dark;
+}
+
+@media screen and (max-width: 455px) {
+  .logo {
+   display: none
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .nav-itmes {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  nav div i {
+    padding: 0 20px;
+  }
+}
