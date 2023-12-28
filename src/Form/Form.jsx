@@ -3,10 +3,10 @@ import './form.css'
 import { useState } from 'react'
 import { timeSlots } from '../timeSlots'
 
-export default function Form({addReservation}) {
+export default function Form({addReservation, selectedDate}) {
   
   const [formData, setFormData] = useState({
-    date: '',
+    date: selectedDate,
     name: '',
     time: '',
     partySize: '',
@@ -14,10 +14,10 @@ export default function Form({addReservation}) {
   })
 
   const reservalableTimes = timeSlots.map(time => (
-    <option value={time}>{time}</option>
+    <option key={time} value={time === 'select time' ? '' : time}>{time}</option>
   ))
 
-  console.log(formData.partySize)
+  console.log(formData)
 
   const handleChange = (event) => {
     setFormData(prevFormData => {
@@ -48,11 +48,13 @@ export default function Form({addReservation}) {
       <input type='text' name='name' value={formData.name} placeholder='name' onChange={handleChange} />
 
       <label for='time'></label>
-      <select name='time' value={formData.time} onChange={handleChange} >{reservalableTimes}</select>
+      <select name='time' value={formData.time} onChange={handleChange} >
+        {reservalableTimes}
+      </select>
 
       <label for='partySiize'></label>
       <select name='partySize' value={formData.partySize} onChange={handleChange} >
-        <option value=''>0</option>
+        <option value=''>party size</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>

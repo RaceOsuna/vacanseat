@@ -4,8 +4,6 @@ import { useState } from 'react'
 
 export default function Header({children, selectedDate, setSelectedDate, setShowForm}) {
 
-  const [showDatepicker, setShowDatepicker] = useState(false)
-
   return (
     <div className='layout'>
       <nav>

@@ -54,7 +54,7 @@ console.log('here', resData)
       <div className='app'>
         <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm}>
           {!showForm && <Reservations resData={resData} selectedDate={selectedDate} />}
-          {showForm && <Form addReservation={addReservation} />}
+          {showForm && <Form addReservation={addReservation} selectedDate={selectedDate} />}
         </Layout>
       </div>
     </LocalizationProvider>

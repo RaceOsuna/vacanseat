@@ -1,4 +1,5 @@
 const timeSlots = [
+  'select time',
   '9:00 AM',
   '9:15 AM',
   '9:30 AM',
