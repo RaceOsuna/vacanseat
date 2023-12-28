@@ -31,29 +31,36 @@ export default function Form({addReservation, selectedDate}) {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    if (Object.values(formData).some(value => value === '')) {
+    if (Object.values(formData).some(value => value === '' || formData.phoneNumber.length !== 10)) {
       console.log('error')
       return
     }
 
     addReservation(event,formData)
+    setFormData({
+      date: selectedDate,
+      name: '',
+      time: '',
+      partySize: '',
+      phoneNumber: ''
+    })
   }
 
   return (
     <form>
       <label for='date'></label>
-      <input type='date' name='date' value={formData.date} onChange={handleChange} />
+      <input type='date' name='date' value={formData.date} onChange={handleChange} required />
 
       <label htmlFor="name"></label>
-      <input type='text' name='name' value={formData.name} placeholder='name' onChange={handleChange} />
+      <input type='text' name='name' value={formData.name} placeholder='name' onChange={handleChange} required />
 
       <label for='time'></label>
-      <select name='time' value={formData.time} onChange={handleChange} >
+      <select name='time' value={formData.time} onChange={handleChange} required >
         {reservalableTimes}
       </select>
 
       <label for='partySiize'></label>
-      <select name='partySize' value={formData.partySize} onChange={handleChange} >
+      <select name='partySize' value={formData.partySize} onChange={handleChange} required >
         <option value=''>party size</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
@@ -70,7 +77,7 @@ export default function Form({addReservation, selectedDate}) {
       </select>
 
       <label for="phoneNumber" ></label>
-      <input type="tel" name='phoneNumber' value={formData.phoneNumber} placeholder='phone number' minLength={10} maxLength={10} onChange={handleChange}/>
+      <input type="tel" name='phoneNumber' value={formData.phoneNumber} placeholder='phone number' minLength={10} maxLength={10} onChange={handleChange} required/>
 
       <button onClick={handleSubmit}>Book</button>
     </form>

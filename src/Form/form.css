@@ -20,4 +20,5 @@ form button {
   width: 25%;
   background-color: white;
   color: black;
+  cursor: pointer;
 }
