@@ -24,16 +24,17 @@ export default function ResCard(props) {
       </div>
       <div className='contact'>
         <div>
-          <p>7:00</p>
+          <div className='time-size'>
+            <p>7:00</p>
+            <i class="fa-solid fa-people-group"></i>
+            <p>{props.res.partySize}</p>
+          </div>
           <h4>{props.res.name}</h4>
         </div>
       </div>
       <div className='details'>
           <p>{formattedPhone}</p>
           <p>notes</p>
-      </div>
-      <div className='party-size'>
-        {props.res.partySize}
       </div>
     </div>
   )

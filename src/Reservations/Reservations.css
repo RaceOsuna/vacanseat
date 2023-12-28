@@ -21,6 +21,8 @@
   gap: 10px;
   margin-right: auto;
   font-size: large;
+  width: fit-content;
+  overflow: hidden;
 }
 
 .contact p {
@@ -51,4 +53,13 @@
   font-size: medium;
   margin-right: 15px;
   min-width: 115px;
+}
+
+.time-size {
+  display: flex;
+}
+
+.time-size i {
+  margin-left: 25px;
+  margin-right: 10px;
 }
