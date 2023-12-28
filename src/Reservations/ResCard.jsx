@@ -26,7 +26,7 @@ export default function ResCard(props) {
         <div>
           <div className='time-size'>
             <p>7:00</p>
-            <i class="fa-solid fa-people-group"></i>
+            <i class="fa-solid fa-people-group fa-xs"></i>
             <p>{props.res.partySize}</p>
           </div>
           <h4>{props.res.name}</h4>
