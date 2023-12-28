@@ -7,6 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import Reservations from './Reservations/Reservations';
 import Layout from './Layout/Layout';
+import Form from './Form/Form';
 
 function App() {
 
@@ -19,6 +20,8 @@ const [resCount, setResCount] = useState(resData.length)
 
 const today = new Date().toLocaleDateString();
 const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0])
+
+const [showForm, setShowForm] = useState(false)
 
 console.log(selectedDate)
 
@@ -36,11 +39,14 @@ useEffect(() => {
   getData()
 }, [resCount])
 
+console.log('here', resData)
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className='app'>
         <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate}>
-          <Reservations resData={resData} selectedDate={selectedDate} />
+          {!showForm && <Reservations resData={resData} selectedDate={selectedDate} />}
+          {showForm && <Form />}
         </Layout>
       </div>
     </LocalizationProvider>

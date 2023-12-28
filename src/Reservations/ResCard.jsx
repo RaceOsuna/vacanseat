@@ -14,12 +14,11 @@ export default function ResCard(props) {
       return 'something went wrong'
     }
   }
-
+  
   const formattedPhone = phoneFormat(props.res.phone)
-  // console.log('phone', formattedPhone)
 
   return (
-    <div className='reservation-card'>
+    <div key={props.res.name} className='reservation-card'>
       <div className='grip-dots'>
         <i class="fa-solid fa-ellipsis-vertical"></i>
       </div>

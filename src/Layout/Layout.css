@@ -25,6 +25,10 @@ nav div i {
   color-scheme: dark;
 }
 
+.add {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 455px) {
   .logo {
    display: none
