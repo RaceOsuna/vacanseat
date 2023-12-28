@@ -3,7 +3,7 @@ import './form.css'
 import { useState } from 'react'
 import { timeSlots } from '../timeSlots'
 
-export default function Form() {
+export default function Form({addReservation}) {
   
   const [formData, setFormData] = useState({
     date: '',
@@ -56,9 +56,9 @@ export default function Form() {
       </select>
 
       <label for="phoneNumber" ></label>
-      <input type="tel" name='phoneNumber' placeholder='phone number' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' minLength={10} maxLength={10} />
+      <input type="tel" name='phoneNumber' value={formData.phoneNumber} placeholder='phone number' minLength={10} maxLength={10} onChange={handleChange}/>
 
-      <button>Book</button>
+      <button onClick={(event) => addReservation(event,formData)}>Book</button>
     </form>
   )
 }

@@ -3,7 +3,7 @@ import './Reservations.css';
 export default function ResCard(props) {
   
   const phoneFormat = (input) => {
-    if(typeof(input) !== 'string') input = input.toString()
+    // if(typeof(input) !== 'string') input = input.toString()
     if(input.length === 10){
       return input.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
     } else if(input.length < 10) {
@@ -15,12 +15,12 @@ export default function ResCard(props) {
     }
   }
   
-  const formattedPhone = phoneFormat(props.res.phone)
+  const formattedPhone = phoneFormat(props.res.phoneNumber)
 
   return (
     <div key={props.res.name} className='reservation-card'>
       <div className='grip-dots'>
-        <i class="fa-solid fa-ellipsis-vertical"></i>
+        <i className="fa-solid fa-ellipsis-vertical"></i>
       </div>
       <div className='contact'>
         <div>
