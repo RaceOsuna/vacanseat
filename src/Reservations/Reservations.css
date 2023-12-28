@@ -11,14 +11,14 @@
   border: 2px solid rgb(154, 154, 154);
   border-style:ridge;
   border-radius: 5px;
-  height: 75px;
+  height: 100px;
 }
 
 .contact {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  /* gap: 10px; */
   margin-right: auto;
   font-size: large;
   width: fit-content;
@@ -27,6 +27,11 @@
 
 .contact p {
   font-size: small;
+}
+
+.contact div,
+.contact h4 {
+  margin: 10px 0;
 }
 
 .party-size {
@@ -53,6 +58,10 @@
   font-size: medium;
   margin-right: 15px;
   min-width: 115px;
+}
+
+.details p {
+  margin: 10px 0;
 }
 
 .time-size {
