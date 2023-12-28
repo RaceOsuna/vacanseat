@@ -17,7 +17,7 @@ export default function Form({addReservation}) {
     <option value={time}>{time}</option>
   ))
 
-  console.log(formData)
+  console.log(formData.partySize)
 
   const handleChange = (event) => {
     setFormData(prevFormData => {
@@ -26,6 +26,17 @@ export default function Form({addReservation}) {
         [event.target.name]: event.target.value
       }
     } )
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    if (Object.values(formData).some(value => value === '')) {
+      console.log('error')
+      return
+    }
+
+    addReservation(event,formData)
   }
 
   return (
@@ -41,6 +52,7 @@ export default function Form({addReservation}) {
 
       <label for='partySiize'></label>
       <select name='partySize' value={formData.partySize} onChange={handleChange} >
+        <option value=''>0</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
@@ -58,7 +70,7 @@ export default function Form({addReservation}) {
       <label for="phoneNumber" ></label>
       <input type="tel" name='phoneNumber' value={formData.phoneNumber} placeholder='phone number' minLength={10} maxLength={10} onChange={handleChange}/>
 
-      <button onClick={(event) => addReservation(event,formData)}>Book</button>
+      <button onClick={handleSubmit}>Book</button>
     </form>
   )
 }
