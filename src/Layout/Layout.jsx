@@ -2,7 +2,7 @@ import './Layout.css'
 import { useState } from 'react'
 
 
-export default function Header({children, selectedDate, setSelectedDate}) {
+export default function Header({children, selectedDate, setSelectedDate, setShowForm}) {
 
   const [showDatepicker, setShowDatepicker] = useState(false)
 
@@ -15,7 +15,7 @@ export default function Header({children, selectedDate, setSelectedDate}) {
         <div className='nav-items'>
           <i className="fa-solid fa-magnifying-glass"></i>
           <input className='calander' type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)}/>
-          <i className="fa-solid fa-plus add"></i>
+          <i className="fa-solid fa-plus add" onClick={() => setShowForm(prev => !prev)}></i>
         </div>
       </nav>
       <main>
