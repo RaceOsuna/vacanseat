@@ -18,7 +18,7 @@ export default function ResCard(props) {
   const formattedPhone = phoneFormat(props.res.phoneNumber)
 
   return (
-    <div key={props.res.name} className='reservation-card'>
+    <div className='reservation-card' id={props.res.docId}>
       <div className='grip-dots'>
         <i className="fa-solid fa-ellipsis-vertical"></i>
       </div>

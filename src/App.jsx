@@ -27,11 +27,19 @@ console.log(selectedDate)
 
 const getData = async() => {
   const snaps = await getDocs(myCollection)
+  
   let reservs = [];
   snaps.forEach(snap => {
-    reservs.push(snap.data())
+    reservs.push([snap.data(), snap.id])
   })
-  setResData(reservs)
+
+  let reducedReservs = reservs.reduce((acc, curr) => {
+    curr[0].docId = curr[1]
+    acc.push(curr[0])
+    return acc
+  }, [])
+
+  setResData(reducedReservs)
   setResCount(reservs.length)
 }
 
