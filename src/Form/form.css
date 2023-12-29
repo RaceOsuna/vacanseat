@@ -22,3 +22,7 @@ form button {
   color: black;
   cursor: pointer;
 }
+
+form input[type="date"] {
+  color-scheme: dark;
+}

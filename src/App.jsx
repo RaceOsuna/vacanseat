@@ -52,7 +52,7 @@ console.log('here', resData)
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className='app'>
-        <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm}>
+        <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm} showForm={showForm}>
           {!showForm && <Reservations resData={resData} selectedDate={selectedDate} />}
           {showForm && <Form addReservation={addReservation} selectedDate={selectedDate} />}
         </Layout>
