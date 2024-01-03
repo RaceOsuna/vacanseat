@@ -26,3 +26,15 @@ form button {
 form input[type="date"] {
   color-scheme: dark;
 }
+
+@media screen and (min-width: 768px) {
+  form input,
+  form select,
+  form button {
+    width: 690px;
+  }
+
+  form button {
+    width: 192px;
+  }
+}

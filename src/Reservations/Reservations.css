@@ -10,8 +10,11 @@
   align-items: center;
   border: 2px solid rgb(154, 154, 154);
   border-style:ridge;
-  border-radius: 5px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
   height: 100px;
+  width: 100%;
 }
 
 .edit-card {
@@ -22,6 +25,7 @@
   border-style:ridge;
   border-radius: 5px;
   height: 100px;
+  width: 100%;
   background-color: rgb(231, 231, 231);
 }
 
@@ -36,7 +40,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: 10px; */
   margin-right: auto;
   font-size: large;
   width: fit-content;
@@ -52,17 +55,17 @@
   margin: 10px 0;
 }
 
-.party-size {
+/* .party-size {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-left: 2px solid rgb(154, 154, 154);;
+  border-left: 2px solid rgb(154, 154, 154);
   padding: 15px 0;
   width: 45px;
   font-size: larger;
   font-family: swap
-}
+} */
 
 .grip-dots,
 .edit-card div i,
@@ -103,4 +106,15 @@
 
 .cancel i {
   color: red;
+}
+
+@media screen and (min-width: 768px) {
+  .reservation-card,
+  .edit-card {
+    width: 768px;
+  }
+
+  .reservations-container {
+    justify-content: center;
+  }
 }

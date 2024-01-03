@@ -30,7 +30,7 @@ export default function ResCard({res, deleteReservation}) {
     <>
       {!edit && 
       <div className='reservation-card' id={res.docId}>
-        <div className='grip-dots' onClick={() => setEdit(prev => !prev)}>
+        <div className='grip-dots button' onClick={() => setEdit(prev => !prev)}>
           <i className="fa-solid fa-ellipsis-vertical"></i>
         </div>
         <div className='contact'>
