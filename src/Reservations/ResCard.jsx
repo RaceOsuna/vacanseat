@@ -1,6 +1,12 @@
 import './Reservations.css';
+import { useContext } from 'react';
+import { EditContext } from '../ToggleEdit/ToggleEdit';
 
 export default function ResCard(props) {
+
+  const {edit, setEdit} = useContext(EditContext)
+
+  console.log(edit)
   
   const phoneFormat = (input) => {
     // if(typeof(input) !== 'string') input = input.toString()
@@ -18,24 +24,46 @@ export default function ResCard(props) {
   const formattedPhone = phoneFormat(props.res.phoneNumber)
 
   return (
-    <div className='reservation-card' id={props.res.docId}>
-      <div className='grip-dots'>
-        <i className="fa-solid fa-ellipsis-vertical"></i>
-      </div>
-      <div className='contact'>
-        <div>
-          <div className='time-size'>
-            <p>7:00</p>
-            <i className="fa-solid fa-people-group fa-xs"></i>
-            <p>{props.res.partySize}</p>
-          </div>
-          <h4>{props.res.name}</h4>
+    <>
+      {!edit && 
+      <div className='reservation-card' id={props.res.docId}>
+        <div className='grip-dots' onClick={() => setEdit(prev => !prev)}>
+          <i className="fa-solid fa-ellipsis-vertical"></i>
         </div>
-      </div>
-      <div className='details'>
+        <div className='contact'>
+          <div>
+            <div className='time-size'>
+              <p>{props.res.time}</p>
+              <i className="fa-solid fa-people-group fa-xs"></i>
+              <p>{props.res.partySize}</p>
+            </div>
+            <h4>{props.res.name}</h4>
+          </div>
+        </div>
+        <div className='details'>
           <p>{formattedPhone}</p>
-          <p>notes</p>
-      </div>
-    </div>
+          {props.res.notes &&
+            <details>
+            <summary>notes</summary>
+          </details>}
+        </div>
+      </div>}
+      {edit &&
+      <div className='edit-card'>
+        <div className='x button' onClick={() => setEdit(prev => !prev)}>
+          {/* <i className="fa-solid fa-x fa-xs"></i> */}
+          <p>close</p>
+        </div>
+        <div className='confirm button'>
+          <i class="fa-solid fa-check-double fa-xl"></i>
+        </div>
+        <div className='edit button'>
+          <i class="fa-regular fa-pen-to-square fa-xl"></i>
+        </div>
+        <div className='cancel button'>
+          <i class="fa-regular fa-trash-can fa-xl"></i>
+        </div>
+      </div>}
+    </>
   )
 }

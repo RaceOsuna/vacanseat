@@ -14,6 +14,24 @@
   height: 100px;
 }
 
+.edit-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid rgb(154, 154, 154);
+  border-style:ridge;
+  border-radius: 5px;
+  height: 100px;
+  background-color: rgb(231, 231, 231);
+}
+
+.edit-card div,
+.edit-card i,
+.edit-card p {
+  background-color: rgb(231, 231, 231);
+  color: black;
+}
+
 .contact {
   display: flex;
   justify-content: space-between;
@@ -46,12 +64,13 @@
   font-family: swap
 }
 
-.grip-dots {
+.grip-dots,
+.edit-card div i,
+.edit-card div p {
   width:30px;
   margin: 0 10px;
   display: flex;
   justify-content: center;
-  cursor: pointer;
 }
 
 .details {
@@ -72,4 +91,16 @@
   margin-left: 40px;
   margin-right: 7px;
   padding-top: 10px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.confirm i {
+  color: rgb(0, 169, 0);
+}
+
+.cancel i {
+  color: red;
 }

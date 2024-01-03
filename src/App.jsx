@@ -8,6 +8,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import Reservations from './Reservations/Reservations';
 import Layout from './Layout/Layout';
 import Form from './Form/Form';
+import ToggleEdit from './ToggleEdit/ToggleEdit';
 
 function App() {
 
@@ -18,12 +19,10 @@ const myCollection = collection(db, 'reservations')
 const [resData, setResData] = useState([])
 const [resCount, setResCount] = useState(resData.length)
 
-const today = new Date().toLocaleDateString();
-const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0])
+// const today = new Date()
+const [selectedDate, setSelectedDate] = useState(new Date(new Date().toLocaleDateString()).toISOString().split('T')[0])
 
 const [showForm, setShowForm] = useState(false)
-
-console.log(selectedDate)
 
 const getData = async() => {
   const snaps = await getDocs(myCollection)
@@ -55,17 +54,14 @@ useEffect(() => {
   getData()
 }, [resCount])
 
-console.log('here', resData)
-
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className='app'>
         <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm} showForm={showForm}>
           {!showForm && <Reservations resData={resData} selectedDate={selectedDate} />}
           {showForm && <Form addReservation={addReservation} selectedDate={selectedDate} />}
+          {/* <ToggleEdit></ToggleEdit> */}
         </Layout>
       </div>
-    </LocalizationProvider>
   )
 }
 

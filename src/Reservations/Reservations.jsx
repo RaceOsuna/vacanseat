@@ -1,6 +1,5 @@
 import './Reservations.css';
 import ResCard from './ResCard';
-import { useState } from 'react';
 import ToggleEdit from '../ToggleEdit/ToggleEdit';
 
 export default function Reservations({ resData, selectedDate }) {
@@ -9,9 +8,9 @@ export default function Reservations({ resData, selectedDate }) {
   
   const displayReservations = filteredResData.map(res => {
     return (
-      <div>
+      <ToggleEdit>
         <ResCard key={res.docId} res={res} />
-      </div>
+      </ToggleEdit>
     )
   })
 
