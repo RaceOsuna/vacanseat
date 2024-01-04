@@ -3,6 +3,7 @@
 .reservations-container {
   width: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 .reservation-card {
@@ -104,5 +105,6 @@
 
   .reservations-container {
     justify-content: center;
+    align-items: center;
   }
 }
