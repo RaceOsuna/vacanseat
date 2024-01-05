@@ -14,6 +14,13 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
   
   const formattedPhone = phoneFormat(res.phoneNumber)
 
+  const toggleEditCard = () => {
+    setEdit(prev => !prev)
+    if (showNotes) {
+      setShowNotes(prev => !prev)
+    }
+  }
+
   const handleDelete = () => {
     deleteReservation(res.docId)
     setEdit(prev => !prev)
@@ -28,7 +35,7 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
     <>
       {!edit && 
       <div className='reservation-card' id={res.docId}>
-        <div className='grip-dots button' onClick={() => setEdit(prev => !prev)}>
+        <div className='grip-dots button' onClick={toggleEditCard}>
           <i className="fa-solid fa-ellipsis-vertical"></i>
         </div>
         <div className='contact'>
