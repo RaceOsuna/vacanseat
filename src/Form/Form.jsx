@@ -2,6 +2,7 @@ import React from 'react'
 import './form.css'
 import { useState } from 'react'
 import { timeSlots } from '../timeSlots'
+import { scrollToTop } from '../utils'
 
 export default function Form({addReservation, selectedDate, resToEdit, setResToEdit, setShowForm, setDoc, doc, myCollection}) {
 
@@ -43,6 +44,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       phoneNumber: ''
     })
     setShowForm(prev => !prev)
+    scrollToTop()
   }
 
   const cancelEdit = (event) => {
@@ -59,6 +61,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       });
       setShowForm(prev => !prev)
       setResToEdit(null)
+      scrollToTop()
   }
 
   return (
