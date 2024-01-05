@@ -7,19 +7,21 @@ form {
 
 form input,
 form select,
-form button {
-  margin: 20px 0;
+form button,
+textarea {
+  margin: 10px 0;
   padding: 10px;
   width: 90%;
   border: .5px solid white;
   font-size: medium;
-  outline: none;;
+  outline: none;
 }
 
-textarea {
+/* textarea {
   width: 90%;
   padding: 4px;
-}
+  border: .5px solid white;
+} */
 
 form button {
   width: 25%;
@@ -66,13 +68,14 @@ h3 {
 @media screen and (min-width: 768px) {
   form input,
   form select,
-  form button {
+  form button,
+  textarea {
     width: 690px;
   }
 
-  textarea {
+  /* textarea {
     width: 50%;
-  }
+  } */
 
   form button {
     width: 192px;

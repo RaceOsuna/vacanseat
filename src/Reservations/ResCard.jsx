@@ -66,7 +66,6 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
       </div>}
       {showNotes &&
       <div className='notes'>
-        <p>{new Date(res.date).toDateString()} -</p>
         <p>{res.notes}</p>
       </div>}
     </>
