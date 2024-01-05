@@ -2,8 +2,13 @@ import './Layout.css'
 import { useState } from 'react'
 
 
-export default function Header({children, selectedDate, setSelectedDate, setShowForm, showForm}) {
+export default function Header({children, selectedDate, setSelectedDate, setShowForm, showForm, setResToEdit}) {
 
+  const handleGoBack = () => {
+    setShowForm(prev => !prev)
+    setResToEdit(null)
+  }
+  
   return (
     <div className='layout'>
       <nav>
@@ -16,7 +21,7 @@ export default function Header({children, selectedDate, setSelectedDate, setShow
           <i className="fa-solid fa-plus add" onClick={() => setShowForm(prev => !prev)}></i>
         </div>}
         {showForm && <div className='menu-items'>
-          <i className="fa-solid fa-circle-left back-arrow" onClick={() => setShowForm(prev => !prev)}></i>
+          <i className="fa-solid fa-circle-left back-arrow" onClick={handleGoBack}></i>
         </div>}
       </nav>
       <main>

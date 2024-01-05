@@ -2,7 +2,7 @@ import './Reservations.css';
 import { useContext } from 'react';
 import { EditContext } from '../ToggleEdit/ToggleEdit';
 
-export default function ResCard({res, deleteReservation}) {
+export default function ResCard({res, deleteReservation, setResToEdit, setShowForm}) {
 
   const {edit, setEdit} = useContext(EditContext)
   
@@ -15,6 +15,11 @@ export default function ResCard({res, deleteReservation}) {
   const handleDelete = () => {
     deleteReservation(res.docId)
     setEdit(prev => !prev)
+  }
+
+  const handleEdit = () => {
+    setResToEdit({...res})
+    setShowForm(prev => !prev)
   }
 
   return (
@@ -50,7 +55,7 @@ export default function ResCard({res, deleteReservation}) {
         <div className='confirm button'>
           <i class="fa-solid fa-check-double fa-xl"></i>
         </div>
-        <div className='edit button'>
+        <div className='edit button' onClick={handleEdit}>
           <i class="fa-regular fa-pen-to-square fa-xl"></i>
         </div>
         <div className='cancel button' onClick={handleDelete}>

@@ -3,21 +3,19 @@ import './form.css'
 import { useState } from 'react'
 import { timeSlots } from '../timeSlots'
 
-export default function Form({addReservation, selectedDate}) {
-  
-  const [formData, setFormData] = useState({
+export default function Form({addReservation, selectedDate, resToEdit, setResToEdit, setShowForm, setDoc, doc, myCollection}) {
+
+  const [formData, setFormData] = useState(resToEdit || {
     date: selectedDate,
     name: '',
     time: '',
     partySize: '',
     phoneNumber: ''
   })
-
+  console.log(formData)
   const reservalableTimes = timeSlots.map(time => (
     <option key={time} value={time === 'select time' ? '' : time}>{time}</option>
   ))
-
-  console.log(formData)
 
   const handleChange = (event) => {
     setFormData(prevFormData => {
@@ -44,22 +42,41 @@ export default function Form({addReservation, selectedDate}) {
       partySize: '',
       phoneNumber: ''
     })
+    setShowForm(prev => !prev)
+  }
+
+  const cancelEdit = (event) => {
+    event.preventDefault()
+    setResToEdit(null)
+    setShowForm(false)
+  }
+
+  const updateReservation = async(event) => {
+    event.preventDefault()
+    console.log(formData.docId)
+    await setDoc(doc(myCollection, formData.docId), {
+        ...formData
+      });
+      setShowForm(prev => !prev)
   }
 
   return (
+    <>
+    {resToEdit && <h3>Edit Resservation</h3>}
+
     <form>
-      <label for='date'></label>
+      <label htmlFor='date'></label>
       <input type='date' name='date' value={formData.date} onChange={handleChange} required />
 
       <label htmlFor="name"></label>
       <input type='text' name='name' value={formData.name} placeholder='name' onChange={handleChange} required />
 
-      <label for='time'></label>
+      <label htmlFor='time'></label>
       <select name='time' value={formData.time} onChange={handleChange} required >
         {reservalableTimes}
       </select>
 
-      <label for='partySiize'></label>
+      <label htmlFor='partySiize'></label>
       <select name='partySize' value={formData.partySize} onChange={handleChange} required >
         <option value=''>party size</option>
         <option value='1'>1</option>
@@ -76,10 +93,16 @@ export default function Form({addReservation, selectedDate}) {
         <option value='12'>12</option>
       </select>
 
-      <label for="phoneNumber" ></label>
+      <label htmlFor="phoneNumber" ></label>
       <input type="tel" name='phoneNumber' value={formData.phoneNumber} placeholder='phone number' minLength={10} maxLength={10} onChange={handleChange} required/>
 
-      <button onClick={handleSubmit}>Book</button>
+      {!resToEdit &&<button onClick={handleSubmit}>Book</button>}
+      {resToEdit &&
+      <div>
+        <button onClick={updateReservation}>Submit</button>
+        <button onClick={cancelEdit}>Cancel</button>
+      </div>} 
     </form>
+    </>
   )
 }

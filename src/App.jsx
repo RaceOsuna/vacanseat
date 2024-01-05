@@ -17,6 +17,9 @@ const [resData, setResData] = useState([])
 const [resCount, setResCount] = useState(resData.length)
 const [selectedDate, setSelectedDate] = useState(new Date(new Date().toLocaleDateString()).toISOString().split('T')[0])
 const [showForm, setShowForm] = useState(false)
+const [resToEdit, setResToEdit] = useState(null)
+
+// resToEdit ? console.log(resToEdit) : console.log('null')
 
 useEffect(() => {
   onSnapshot(myCollection, (snapshot) => {
@@ -31,7 +34,6 @@ useEffect(() => {
     setResData(reservs)
   })
 }, [])
-console.log(resCount)
 
 const addReservation = async(event, data) => {
   event.preventDefault()
@@ -47,9 +49,9 @@ const deleteReservation = async(id) => {
 
   return (
     <div className='app'>
-      <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm} showForm={showForm}>
-        {!showForm && <Reservations resData={resData} selectedDate={selectedDate} deleteReservation={deleteReservation}/>}
-        {showForm && <Form addReservation={addReservation} selectedDate={selectedDate} />}
+      <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm} showForm={showForm} setResToEdit={setResToEdit}>
+        {!showForm && <Reservations resData={resData} selectedDate={selectedDate} deleteReservation={deleteReservation} setResToEdit={setResToEdit} setShowForm={setShowForm}/>}
+        {showForm && <Form addReservation={addReservation} selectedDate={selectedDate} resToEdit={resToEdit} setResToEdit={setResToEdit} setShowForm={setShowForm} setDoc={setDoc} doc={doc} myCollection={myCollection}/>}
       </Layout>
     </div>
   )
