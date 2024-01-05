@@ -12,9 +12,9 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
     partySize: '',
     phoneNumber: ''
   })
-  console.log(formData)
-  const reservalableTimes = timeSlots.map(time => (
-    <option key={time} value={time === 'select time' ? '' : time}>{time}</option>
+  console.log(formData.time)
+  const reservalableTimes = timeSlots.map((time, index) => (
+    <option key={time} value={time === 'select time' ? '' : `${time}-${index + 1}`}>{time}</option>
   ))
 
   const handleChange = (event) => {

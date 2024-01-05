@@ -32,7 +32,7 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
         <div className='contact'>
           <div>
             <div className='time-size'>
-              <p>{res.time}</p>
+              <p>{res.time.split('-')[0]}</p>
               <i className="fa-solid fa-people-group fa-xs"></i>
               <p>{res.partySize}</p>
             </div>
