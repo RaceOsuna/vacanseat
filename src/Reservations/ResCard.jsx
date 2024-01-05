@@ -45,7 +45,7 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
          
             <p>{new Date(res.date).toDateString()}</p>
             <p>{formattedPhone}</p>
-            {res.notes && <p onClick={() => setShowNotes(prev => !prev)}>notes</p>}
+            {res.notes && <p onClick={() => setShowNotes(prev => !prev)}>notes {showNotes ? '⬇' : '⬅'}</p>}
          
         </div>
       </div>}
