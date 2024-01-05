@@ -27,6 +27,37 @@ form input[type="date"] {
   color-scheme: dark;
 }
 
+.edit-buttons {
+  display: flex;
+  gap: 50px;
+}
+
+.edit-buttons button {
+  width: 50%;
+}
+
+.submit-button {
+  background-color: rgb(95, 180, 95);
+  border: 2px solid green;
+  color: white;
+}
+
+.cancel-button {
+  background-color: rgb(180, 95, 95);
+  border: 2px solid rgb(128, 0, 0);
+  color: white;
+}
+
+.edit-banner {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+h3 {
+  color: red;
+}
+
 @media screen and (min-width: 768px) {
   form input,
   form select,

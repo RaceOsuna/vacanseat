@@ -19,8 +19,6 @@ const [selectedDate, setSelectedDate] = useState(new Date(new Date().toLocaleDat
 const [showForm, setShowForm] = useState(false)
 const [resToEdit, setResToEdit] = useState(null)
 
-// resToEdit ? console.log(resToEdit) : console.log('null')
-
 useEffect(() => {
   onSnapshot(myCollection, (snapshot) => {
     let reservs = []

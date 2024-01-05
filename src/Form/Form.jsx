@@ -63,7 +63,10 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
 
   return (
     <>
-    {resToEdit && <h3>Edit Resservation</h3>}
+    {resToEdit && 
+    <div className='edit-banner'>
+      <h3>Edit Resservation</h3>
+    </div>}
 
     <form>
       <label htmlFor='date'></label>
@@ -97,11 +100,11 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       <label htmlFor="phoneNumber" ></label>
       <input type="tel" name='phoneNumber' value={formData.phoneNumber} placeholder='phone number' minLength={10} maxLength={10} onChange={handleChange} required/>
 
-      {!resToEdit &&<button onClick={handleSubmit}>Book</button>}
+      {!resToEdit &&<button className='submit-button' onClick={handleSubmit}>Book</button>}
       {resToEdit &&
-      <div>
-        <button onClick={updateReservation}>Submit</button>
-        <button onClick={cancelEdit}>Cancel</button>
+      <div className='edit-buttons'>
+        <button className='submit-button' onClick={updateReservation}>Submit</button>
+        <button className='cancel-button' onClick={cancelEdit}>Cancel</button>
       </div>} 
     </form>
     </>
