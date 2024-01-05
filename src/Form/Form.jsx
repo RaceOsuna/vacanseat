@@ -58,13 +58,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
         ...formData
       });
       setShowForm(prev => !prev)
-      setFormData({
-        date: selectedDate,
-        name: '',
-        time: '',
-        partySize: '',
-        phoneNumber: ''
-      })
+      setResToEdit(null)
   }
 
   return (
