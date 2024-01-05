@@ -11,9 +11,10 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
     name: '',
     time: '',
     partySize: '',
-    phoneNumber: ''
+    phoneNumber: '',
+    notes: ''
   })
-  console.log(formData.time)
+  console.log(formData.notes)
   const reservalableTimes = timeSlots.map((time, index) => (
     <option key={time} value={time === 'select time' ? '' : `${time}-${index + 1}`}>{time}</option>
   ))
@@ -102,6 +103,9 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
 
       <label htmlFor="phoneNumber" ></label>
       <input type="tel" name='phoneNumber' value={formData.phoneNumber} placeholder='phone number' minLength={10} maxLength={10} onChange={handleChange} required/>
+
+      <label htmlFor="notes"></label>
+      <textarea name="notes" cols="30" rows="3" placeholder='Reservation Notes...' value={formData.notes} onChange={handleChange}></textarea>
 
       {!resToEdit &&<button className='submit-button' onClick={handleSubmit}>Book</button>}
       {resToEdit &&

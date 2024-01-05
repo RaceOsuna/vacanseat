@@ -1,10 +1,12 @@
 import './Reservations.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { EditContext } from '../ToggleEdit/ToggleEdit';
 
 export default function ResCard({res, deleteReservation, setResToEdit, setShowForm}) {
 
   const {edit, setEdit} = useContext(EditContext)
+
+  const [showNotes, setShowNotes] = useState(false)
   
   const phoneFormat = (input) => {
       return input.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
@@ -41,10 +43,11 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
         </div>
         <div className='details'>
           <p>{formattedPhone}</p>
-          {res.notes &&
-            <details>
-            <summary>notes</summary>
-          </details>}
+          {res.notes && <p onClick={() => setShowNotes(prev => !prev)}>notes</p>}
+           {/* <details>
+             <summary>notes</summary>
+             <p>{res.notes}</p>
+           </details> */}
         </div>
       </div>}
       {edit &&
@@ -61,6 +64,10 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
         <div className='cancel button' onClick={handleDelete}>
           <i class="fa-regular fa-trash-can fa-xl"></i>
         </div>
+      </div>}
+      {showNotes &&
+      <div className='notes'>
+        <p>{res.notes}</p>
       </div>}
     </>
   )

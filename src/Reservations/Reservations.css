@@ -21,7 +21,7 @@
 .edit-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   border: 2px solid rgb(154, 154, 154);
   border-style:ridge;
   border-radius: 5px;
@@ -65,6 +65,10 @@
   justify-content: center;
 }
 
+.edit-card div p {
+  margin: 0 20px;
+}
+
 .details {
   font-size: medium;
   margin-right: 15px;
@@ -97,9 +101,33 @@
   color: red;
 }
 
+.notes {
+  width: 100%;
+  background-color: white;
+  color: black;
+}
+.notes p {
+  width: 100%;
+  background-color: white;
+  color: black;
+}
+
+.notes p {
+  margin: 4px 0;
+  padding-left: 4px;
+  font-size: small;
+}
+
+.details p:nth-child(2) {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
   .reservation-card,
-  .edit-card {
+  .edit-card,
+  .notes,
+  .notes p
+   {
     width: 768px;
   }
 

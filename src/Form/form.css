@@ -16,6 +16,11 @@ form button {
   outline: none;;
 }
 
+textarea {
+  width: 90%;
+  padding: 4px;
+}
+
 form button {
   width: 25%;
   background-color: white;
@@ -63,6 +68,10 @@ h3 {
   form select,
   form button {
     width: 690px;
+  }
+
+  textarea {
+    width: 50%;
   }
 
   form button {
