@@ -17,11 +17,9 @@ textarea {
   outline: none;
 }
 
-/* textarea {
+.error-message {
   width: 90%;
-  padding: 4px;
-  border: .5px solid white;
-} */
+}
 
 form button {
   width: 25%;
@@ -65,17 +63,19 @@ h3 {
   color: red;
 }
 
+form p {
+  color: red;
+  font-size: small;
+}
+
 @media screen and (min-width: 768px) {
   form input,
   form select,
   form button,
-  textarea {
+  textarea,
+  .error-message {
     width: 690px;
   }
-
-  /* textarea {
-    width: 50%;
-  } */
 
   form button {
     width: 192px;
