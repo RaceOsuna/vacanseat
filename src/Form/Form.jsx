@@ -72,7 +72,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
     <>
     {resToEdit && 
     <div className='edit-banner'>
-      <h3>Edit Resservation</h3>
+      <h3>Edit Reservation</h3>
     </div>}
 
     <form>

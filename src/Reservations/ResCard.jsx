@@ -49,11 +49,9 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
           </div>
         </div>
         <div className='details'>
-         
             <p>{new Date(res.date).toDateString()}</p>
             <p>{formattedPhone}</p>
-            {res.notes && <p onClick={() => setShowNotes(prev => !prev)}>notes {showNotes ? '⬇' : '⬅'}</p>}
-         
+            {res.notes && <p onClick={() => setShowNotes(prev => !prev)}>notes {showNotes ? '⬇' : '⬅'}</p>}   
         </div>
       </div>}
       {edit &&
@@ -62,13 +60,13 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
           <p>close</p>
         </div>
         <div className='confirm button'>
-          <i class="fa-solid fa-check-double fa-xl"></i>
+          <i className="fa-solid fa-check-double fa-xl"></i>
         </div>
         <div className='edit button' onClick={handleEdit}>
-          <i class="fa-regular fa-pen-to-square fa-xl"></i>
+          <i className="fa-regular fa-pen-to-square fa-xl"></i>
         </div>
         <div className='cancel button' onClick={handleDelete}>
-          <i class="fa-regular fa-trash-can fa-xl"></i>
+          <i className="fa-regular fa-trash-can fa-xl"></i>
         </div>
       </div>}
       {showNotes &&

@@ -1,7 +1,6 @@
 import './Reservations.css';
 import ResCard from './ResCard';
 import ToggleEdit from '../ToggleEdit/ToggleEdit';
-import { useState } from 'react';
 
 export default function Reservations({ resData, selectedDate, deleteReservation, setResToEdit, setShowForm, openSearchBar, searchParams, setSearchParams }) {
 
@@ -17,8 +16,8 @@ export default function Reservations({ resData, selectedDate, deleteReservation,
  
   const displayReservations = filteredResData.map(res => {
     return (
-      <ToggleEdit>
-        <ResCard key={res.docId} res={res} deleteReservation={deleteReservation} setResToEdit={setResToEdit} setShowForm={setShowForm}/>
+      <ToggleEdit key={res.docId}>
+        <ResCard res={res} deleteReservation={deleteReservation} setResToEdit={setResToEdit} setShowForm={setShowForm}/>
       </ToggleEdit>
     )
   })
