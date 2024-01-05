@@ -14,7 +14,9 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
     phoneNumber: '',
     notes: ''
   })
-  console.log(formData.notes)
+
+  const [formError, setFormError] = useState(false)
+
   const reservalableTimes = timeSlots.map((time, index) => (
     <option key={time} value={time === 'select time' ? '' : `${time}-${index + 1}`}>{time}</option>
   ))
@@ -27,12 +29,13 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       }
     } )
   }
-
+  console.log(formError)
   const handleSubmit = (event) => {
     event.preventDefault()
-
-    if (Object.values(formData).some(value => value === '' || formData.phoneNumber.length !== 10)) {
-      console.log('error')
+    const keys = Object.keys(formData).filter(key => key !== 'notes')
+    if (keys.some(key => formData[key] === '' || formData.phoneNumber.length !== 10)) {
+      setFormError(true)
+      alert('fill out all input fields')
       return
     }
 
