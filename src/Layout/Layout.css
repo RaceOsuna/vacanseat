@@ -20,6 +20,10 @@ nav div i {
   margin: 0 20px;
 }
 
+.search {
+  cursor: pointer;
+}
+
 .calendar {
   border: none;
   color-scheme: dark;

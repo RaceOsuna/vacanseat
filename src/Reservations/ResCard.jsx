@@ -42,12 +42,11 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
           </div>
         </div>
         <div className='details'>
-          <p>{formattedPhone}</p>
-          {res.notes && <p onClick={() => setShowNotes(prev => !prev)}>notes</p>}
-           {/* <details>
-             <summary>notes</summary>
-             <p>{res.notes}</p>
-           </details> */}
+         
+            <p>{new Date(res.date).toDateString()}</p>
+            <p>{formattedPhone}</p>
+            {res.notes && <p onClick={() => setShowNotes(prev => !prev)}>notes</p>}
+         
         </div>
       </div>}
       {edit &&
@@ -67,6 +66,7 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
       </div>}
       {showNotes &&
       <div className='notes'>
+        <p>{new Date(res.date).toDateString()} -</p>
         <p>{res.notes}</p>
       </div>}
     </>

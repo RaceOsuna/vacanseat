@@ -18,6 +18,8 @@ const [resCount, setResCount] = useState(resData.length)
 const [selectedDate, setSelectedDate] = useState(new Date(new Date().toLocaleDateString()).toISOString().split('T')[0])
 const [showForm, setShowForm] = useState(false)
 const [resToEdit, setResToEdit] = useState(null)
+const [openSearchBar, setOpenSearchBar] = useState(false)
+const [searchParams, setSearchParams] = useState('')
 
 useEffect(() => {
   onSnapshot(myCollection, (snapshot) => {
@@ -47,8 +49,8 @@ const deleteReservation = async(id) => {
 
   return (
     <div className='app'>
-      <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm} showForm={showForm} setResToEdit={setResToEdit}>
-        {!showForm && <Reservations resData={resData} selectedDate={selectedDate} deleteReservation={deleteReservation} setResToEdit={setResToEdit} setShowForm={setShowForm}/>}
+      <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm} showForm={showForm} setResToEdit={setResToEdit} setOpenSearchBar={setOpenSearchBar} setSearchParams={setSearchParams}>
+        {!showForm && <Reservations resData={resData} selectedDate={selectedDate} deleteReservation={deleteReservation} setResToEdit={setResToEdit} setShowForm={setShowForm} openSearchBar={openSearchBar} searchParams={searchParams} setSearchParams={setSearchParams}/>}
         {showForm && <Form addReservation={addReservation} selectedDate={selectedDate} resToEdit={resToEdit} setResToEdit={setResToEdit} setShowForm={setShowForm} setDoc={setDoc} doc={doc} myCollection={myCollection}/>}
       </Layout>
     </div>
