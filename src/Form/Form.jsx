@@ -162,7 +162,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       </div>} */}
       {customPartySize && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
       
-      {resToEdit && resToEdit.customParty > 0 && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
+      {resToEdit && resToEdit.customParty > -1 && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
 
       {formError.phoneNumber && 
       <div className='error-message'>
