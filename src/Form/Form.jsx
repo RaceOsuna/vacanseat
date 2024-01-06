@@ -6,11 +6,14 @@ import { scrollToTop } from '../utils'
 
 export default function Form({addReservation, selectedDate, resToEdit, setResToEdit, setShowForm, setDoc, doc, myCollection}) {
 
+  const [customPartySize, setCustomPartySize] = useState(false)
+
   const [formData, setFormData] = useState(resToEdit || {
     date: selectedDate,
     name: '',
     time: '',
     partySize: '',
+    customParty: '',
     phoneNumber: '',
     notes: ''
   })
@@ -20,6 +23,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
     name: '',
     time: '',
     partySize: '',
+    customParty: '',
     phoneNumber: '',
     notes: ''
   })
@@ -29,12 +33,27 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
   ))
 
   const handleChange = (event) => {
+    if (event.target.name === 'partySize' && event.target.value === 'custom') {
+      setCustomPartySize(true)
+    } else if (event.target.name === 'partySize' && event.target.value !== 'custom') {
+      setCustomPartySize(false)
+      setFormData(prevFormData => ({...prevFormData, customPartySize: 0}))
+    }
+      setFormData(prevFormData => {
+        return {
+          ...prevFormData,
+          [event.target.name]: event.target.value
+        }
+      })
+  }
+
+  const handleCustomPartySize = (event) => {
     setFormData(prevFormData => {
       return {
         ...prevFormData,
         [event.target.name]: event.target.value
       }
-    } )
+    })
   }
   
   const handleSubmit = (event) => {
@@ -45,13 +64,18 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
         if (formData[key] === '') {
           return setFormError(prev => ({...prev, [key]: 'error'}))
         }
-        if (key === 'phoneNumber' && formData.phoneNumber !== 10) {
+        if (key === 'phoneNumber' && formData.phoneNumber.length !== 10) {
           return setFormError(prev => ({...prev, [key]: 'error'}))
         }
         if (key !== '') {
           return setFormError(prev => ({...prev, [key]: ''}))
         }
       })
+      if (customPartySize && formData.customParty < 1) {
+        setFormError(prev => ({...prev, customParty: 'error'}))
+      } else if (!customPartySize) {
+        setFormError(prev => ({...prev, customParty: ''}))
+      }
       return
     }
 
@@ -61,6 +85,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       name: '',
       time: '',
       partySize: '',
+      customParty: 0,
       phoneNumber: ''
     })
     setShowForm(prev => !prev)
@@ -95,23 +120,26 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       <label htmlFor='date'></label>
       <input type='date' name='date' value={formData.date} onChange={handleChange} required />
 
-      {formError.name && <div className='error-message'>
+      {formError.name && 
+      <div className='error-message'>
         <p>please provide a name</p>
-        </div>}
+      </div>}
       <label htmlFor="name"></label>
       <input type='text' name='name' value={formData.name} placeholder='name' onChange={handleChange} required />
 
-      {formError.time && <div className='error-message'>
+      {formError.time && 
+      <div className='error-message'>
         <p>please select a time</p>
-        </div>}
+      </div>}
       <label htmlFor='time'></label>
       <select name='time' value={formData.time} onChange={handleChange} required >
         {reservalableTimes}
       </select>
 
-      {formError.partySize && <div className='error-message'>
+      {formError.partySize && 
+      <div className='error-message'>
         <p>please specify party size</p>
-        </div>}
+      </div>}
       <label htmlFor='partySiize'></label>
       <select name='partySize' value={formData.partySize} onChange={handleChange} required >
         <option value=''>party size</option>
@@ -127,11 +155,21 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
         <option value='10'>10</option>
         <option value='11'>11</option>
         <option value='12'>12</option>
+        <option value='custom'>custom</option>
       </select>
 
-      {formError.phoneNumber && <div className='error-message'>
+      {formError.customParty && 
+      <div className='error-message'>
+        <p>please set cutom party size</p>
+      </div>}
+      {customPartySize && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
+      
+      {resToEdit && resToEdit.customParty && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
+
+      {formError.phoneNumber && 
+      <div className='error-message'>
         <p>please provide a ten digit phone number</p>
-        </div>}
+      </div>}
       <label htmlFor="phoneNumber" ></label>
       <input type="tel" name='phoneNumber' value={formData.phoneNumber} placeholder='phone number' minLength={10} maxLength={10} onChange={handleChange} required/>
 
