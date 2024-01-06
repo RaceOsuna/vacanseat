@@ -97,11 +97,11 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
     event.preventDefault()
     setResToEdit(null)
     setShowForm(false)
+    scrollToTop()
   }
 
   const updateReservation = async(event) => {
     event.preventDefault()
-    console.log(formData.docId)
     await setDoc(doc(myCollection, formData.docId), {
         ...formData
       });
