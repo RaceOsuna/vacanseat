@@ -37,6 +37,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       setCustomPartySize(true)
     } else if (event.target.name === 'partySize' && event.target.value !== 'custom') {
       setCustomPartySize(false)
+      setFormError(prev => ({...prev, customParty: ''}))
       setFormData(prevFormData => ({...prevFormData, customPartySize: 0}))
     }
       setFormData(prevFormData => {
