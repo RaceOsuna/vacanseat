@@ -73,11 +73,10 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
         }
       })
       if (customPartySize && formData.customParty < 1) {
-        setFormError(prev => ({...prev, customParty: 'error'}))
+        return setFormError(prev => ({...prev, customParty: 'error'}))
       } else if (!customPartySize) {
-        setFormError(prev => ({...prev, customParty: ''}))
+        return setFormError(prev => ({...prev, customParty: ''}))
       }
-      return
     }
 
     addReservation(event,formData)
@@ -86,7 +85,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       name: '',
       time: '',
       partySize: '',
-      customParty: 0,
+      customParty: '',
       phoneNumber: ''
     })
     setShowForm(prev => !prev)
