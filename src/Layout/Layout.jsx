@@ -2,7 +2,7 @@ import './Layout.css'
 import { useState } from 'react'
 
 
-export default function Header({children, selectedDate, setSelectedDate, setShowForm, showForm, setResToEdit, setOpenSearchBar, setSearchParams}) {
+export default function Header({children, selectedDate, setSelectedDate, setShowForm, showForm, setResToEdit, setOpenSearchBar, setSearchParams, openSearchBar}) {
 
   const handleGoBack = () => {
     setShowForm(prev => !prev)
@@ -14,6 +14,14 @@ export default function Header({children, selectedDate, setSelectedDate, setShow
     setOpenSearchBar(prev => !prev)
   }
 
+  const handleShowForm = () => {
+    setShowForm(prev => !prev)
+    if(openSearchBar) {
+      setOpenSearchBar(prev => !prev)
+      setSearchParams('')
+    }
+  }
+
   return (
     <div className='layout'>
       <nav>
@@ -21,9 +29,11 @@ export default function Header({children, selectedDate, setSelectedDate, setShow
           <h2>Grande Station</h2>
         </div>
         {!showForm && <div className='nav-items'>
-          <i className="fa-solid fa-lg fa-magnifying-glass search" onClick={handlOpenSearchBar}></i>
+          {!openSearchBar && <i className="fa-solid fa-lg fa-magnifying-glass-plus search" onClick={handlOpenSearchBar}></i>}
+          {openSearchBar &&<i className="fa-solid fa-lg fa-magnifying-glass-minus search" onClick={handlOpenSearchBar}></i>}
+          {/* <i className="fa-solid fa-lg fa-magnifying-glass-plus search" onClick={handlOpenSearchBar}></i> */}
           <input className='calendar' type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)}/>
-          <i className="fa-solid fa-plus fa-lg add" onClick={() => setShowForm(prev => !prev)}></i>
+          <i className="fa-solid fa-plus fa-lg add" onClick={handleShowForm}></i>
         </div>}
         {showForm && <div className='menu-items'>
           <i className="fa-solid fa-circle-left fa-xl back-arrow" onClick={handleGoBack}></i>

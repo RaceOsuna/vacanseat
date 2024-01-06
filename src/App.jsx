@@ -49,7 +49,7 @@ const deleteReservation = async(id) => {
 
   return (
     <div className='app'>
-      <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm} showForm={showForm} setResToEdit={setResToEdit} setOpenSearchBar={setOpenSearchBar} setSearchParams={setSearchParams}>
+      <Layout selectedDate={selectedDate} setSelectedDate={setSelectedDate} setShowForm={setShowForm} showForm={showForm} setResToEdit={setResToEdit} setOpenSearchBar={setOpenSearchBar} setSearchParams={setSearchParams} openSearchBar={openSearchBar}>
         {!showForm && <Reservations resData={resData} selectedDate={selectedDate} deleteReservation={deleteReservation} setResToEdit={setResToEdit} setShowForm={setShowForm} openSearchBar={openSearchBar} searchParams={searchParams} setSearchParams={setSearchParams}/>}
         {showForm && <Form addReservation={addReservation} selectedDate={selectedDate} resToEdit={resToEdit} setResToEdit={setResToEdit} setShowForm={setShowForm} setDoc={setDoc} doc={doc} myCollection={myCollection}/>}
       </Layout>
