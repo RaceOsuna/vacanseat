@@ -13,7 +13,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
     name: '',
     time: '',
     partySize: '',
-    customParty: '',
+    customParty: 0,
     phoneNumber: '',
     notes: ''
   })
@@ -60,7 +60,9 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
   const handleSubmit = (event) => {
     event.preventDefault()
     const keys = Object.keys(formData).filter(key => key !== 'notes')
+
     if (keys.some(key => formData[key] === '' || formData.phoneNumber.length !== 10)) {
+      
       keys.forEach(key => {
         if (formData[key] === '') {
           return setFormError(prev => ({...prev, [key]: 'error'}))
@@ -72,11 +74,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
           return setFormError(prev => ({...prev, [key]: ''}))
         }
       })
-      if (customPartySize && formData.customParty < 1) {
-        return setFormError(prev => ({...prev, customParty: 'error'}))
-      } else if (!customPartySize) {
-        return setFormError(prev => ({...prev, customParty: ''}))
-      }
+      return
     }
 
     addReservation(event,formData)
@@ -158,13 +156,13 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
         <option value='custom'>custom</option>
       </select>
 
-      {formError.customParty && 
+      {/* {formError.customParty === 0 && 
       <div className='error-message'>
         <p>please set cutom party size</p>
-      </div>}
+      </div>} */}
       {customPartySize && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
       
-      {resToEdit && resToEdit.customParty && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
+      {resToEdit && resToEdit.customParty > 0 && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
 
       {formError.phoneNumber && 
       <div className='error-message'>
