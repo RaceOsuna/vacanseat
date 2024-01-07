@@ -1,13 +1,16 @@
 import './Reservations.css';
 import { useContext, useState } from 'react';
 import { EditContext } from '../ToggleEdit/ToggleEdit';
+import { formatDate } from '../utils';
 
 export default function ResCard({res, deleteReservation, setResToEdit, setShowForm}) {
 
   const {edit, setEdit} = useContext(EditContext)
 
   const [showNotes, setShowNotes] = useState(false)
-  
+  // console.log(res.date)
+  // const formattedDate = res.date.split('-')
+  // console.log(new Date(`${formattedDate[1]}-${formattedDate[2]}-${formattedDate[0]}`).toDateString())
   const phoneFormat = (input) => {
       return input.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
   }
@@ -49,7 +52,7 @@ export default function ResCard({res, deleteReservation, setResToEdit, setShowFo
           </div>
         </div>
         <div className='details'>
-            <p>{new Date(res.date).toDateString()}</p>
+            <p>{formatDate(res.date)}</p>
             <p>{formattedPhone}</p>
             {res.notes && <p onClick={() => setShowNotes(prev => !prev)}>notes {showNotes ? '⬇' : '⬅'}</p>}   
         </div>

@@ -1,5 +1,5 @@
 import './Layout.css'
-import { useState } from 'react'
+import { scrollToTop } from '../utils'
 
 
 export default function Header({children, selectedDate, setSelectedDate, setShowForm, showForm, setResToEdit, setOpenSearchBar, setSearchParams, openSearchBar}) {
@@ -12,6 +12,7 @@ export default function Header({children, selectedDate, setSelectedDate, setShow
   const handlOpenSearchBar = () => {
     setSearchParams('')
     setOpenSearchBar(prev => !prev)
+    scrollToTop()
   }
 
   const handleShowForm = () => {
