@@ -27,7 +27,7 @@ export default function Reservations({ resData, selectedDate, deleteReservation,
       {openSearchBar &&
       <div className='searchbar'>
         <label htmlFor="searchbar"></label>
-        <input type="text" name="searchbar" value={searchParams} onChange={(e) => setSearchParams(e.target.value)}/>
+        <input autoFocus type="text" name="searchbar" value={searchParams} onChange={(e) => setSearchParams(e.target.value)}/>
         <button onClick={() => setSearchParams('')}>clear</button>
       </div>}
       {displayReservations}
