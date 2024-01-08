@@ -1,6 +1,6 @@
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 20px;
   background-color: rgb(34, 34, 34);
@@ -8,12 +8,12 @@ nav {
   top: 0;
 }
 
-.nav-items-container {
+/* .nav-items-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 768px;
-}
+} */
 
 nav * {
   background-color: rgb(35, 35, 35);

@@ -25,8 +25,7 @@ export default function Header({children, selectedDate, setSelectedDate, setShow
 
   return (
     <div className='layout'>
-      <nav>
-        <div className='nav-items-container'>
+      <nav> 
           <div className='logo'>
             <h2>Grande Station</h2>
           </div>
@@ -40,7 +39,6 @@ export default function Header({children, selectedDate, setSelectedDate, setShow
           {showForm && <div className='menu-items'>
             <i className="fa-solid fa-circle-left fa-xl back-arrow" onClick={handleGoBack}></i>
           </div>}
-        </div>
       </nav>
       <main>
         {children}
