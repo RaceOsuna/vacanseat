@@ -13,7 +13,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
     name: '',
     time: '',
     partySize: '',
-    customParty: 0,
+    customParty: '',
     phoneNumber: '',
     notes: ''
   })
@@ -38,6 +38,7 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       setFormError(prev => ({...prev, partySize: ''}))
     } else if (event.target.name === 'partySize' && event.target.value !== 'custom') {
       setCustomPartySize(false)
+      setFormData(prev => ({...prev, customParty: ''}))
       setFormError(prev => ({...prev, customParty: ''}))
     }
       setFormData(prevFormData => {
@@ -160,9 +161,9 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
       <div className='error-message'>
         <p>please set cutom party size</p>
       </div>} */}
-      {customPartySize && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
+      {customPartySize && !resToEdit && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
       
-      {resToEdit && resToEdit.customParty > -1 && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
+      {resToEdit && customPartySize && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
 
       {formError.phoneNumber && 
       <div className='error-message'>
