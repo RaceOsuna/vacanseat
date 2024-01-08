@@ -6,14 +6,11 @@ import { scrollToTop } from '../utils'
 
 export default function Form({addReservation, selectedDate, resToEdit, setResToEdit, setShowForm, setDoc, doc, myCollection}) {
 
-  const [customPartySize, setCustomPartySize] = useState(false)
-
   const [formData, setFormData] = useState(resToEdit || {
     date: selectedDate,
     name: '',
     time: '',
     partySize: '',
-    customParty: '',
     phoneNumber: '',
     notes: ''
   })
@@ -23,39 +20,21 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
     name: '',
     time: '',
     partySize: '',
-    customParty: '',
     phoneNumber: '',
     notes: ''
   })
-
+  console.log(formData)
   const reservalableTimes = timeSlots.map((time, index) => (
     <option key={time} value={time === 'select time' ? '' : `${time}-${index + 1}`}>{time}</option>
   ))
 
   const handleChange = (event) => {
-    if (event.target.name === 'partySize' && event.target.value === 'custom') {
-      setCustomPartySize(true)
-      setFormError(prev => ({...prev, partySize: ''}))
-    } else if (event.target.name === 'partySize' && event.target.value !== 'custom') {
-      setCustomPartySize(false)
-      setFormData(prev => ({...prev, customParty: ''}))
-      setFormError(prev => ({...prev, customParty: ''}))
-    }
       setFormData(prevFormData => {
         return {
           ...prevFormData,
           [event.target.name]: event.target.value
         }
       })
-  }
-
-  const handleCustomPartySize = (event) => {
-    setFormData(prevFormData => {
-      return {
-        ...prevFormData,
-        [event.target.name]: event.target.value
-      }
-    })
   }
   
   const handleSubmit = (event) => {
@@ -140,31 +119,8 @@ export default function Form({addReservation, selectedDate, resToEdit, setResToE
         <p>please specify party size</p>
       </div>}
       <label htmlFor='partySiize'></label>
-      <select name='partySize' value={formData.partySize} onChange={handleChange} required >
-        <option value=''>party size</option>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-        <option value='5'>5</option>
-        <option value='6'>6</option>
-        <option value='7'>7</option>
-        <option value='8'>8</option>
-        <option value='9'>9</option>
-        <option value='10'>10</option>
-        <option value='11'>11</option>
-        <option value='12'>12</option>
-        <option value='custom'>custom</option>
-      </select>
-
-      {/* {formError.customParty === 0 && 
-      <div className='error-message'>
-        <p>please set cutom party size</p>
-      </div>} */}
-      {customPartySize && !formData.customParty && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
+      <input type="number" name='partySize' placeholder='party size' value={formData.partySize} onChange={handleChange}/>
       
-      {formData.customParty && <input type="number" name='customParty' min={13} value={formData.customParty} onChange={handleCustomPartySize}/>}
-
       {formError.phoneNumber && 
       <div className='error-message'>
         <p>please provide a ten digit phone number</p>
