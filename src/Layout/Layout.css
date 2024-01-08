@@ -8,13 +8,6 @@ nav {
   top: 0;
 }
 
-/* .nav-items-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 768px;
-} */
-
 nav * {
   background-color: rgb(35, 35, 35);
 }
@@ -34,6 +27,8 @@ nav div i {
 .calendar {
   border: none;
   color-scheme: dark;
+  font-size: medium;
+  width: 120px
 }
 
 .add,
