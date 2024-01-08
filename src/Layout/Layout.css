@@ -1,11 +1,18 @@
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 20px;
   background-color: rgb(34, 34, 34);
   position: sticky;
   top: 0;
+}
+
+.nav-items-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 768px;
 }
 
 nav * {
@@ -34,7 +41,7 @@ nav div i {
   cursor: pointer;
 }
 
-@media screen and (max-width: 455px) {
+@media screen and (max-width: 465px) {
   .logo {
    display: none
   }
