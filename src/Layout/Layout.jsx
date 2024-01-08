@@ -30,9 +30,8 @@ export default function Header({children, selectedDate, setSelectedDate, setShow
             <h2>Grande Station</h2>
           </div>
           {!showForm && <div className='nav-items'>
-            {!openSearchBar && <i className="fa-solid fa-xl fa-magnifying-glass-plus search" onClick={handlOpenSearchBar}></i>}
+            {!openSearchBar && <i className="fa-solid fa-xl fa-magnifying-glass search" onClick={handlOpenSearchBar}></i>}
             {openSearchBar &&<i className="fa-solid fa-xl fa-magnifying-glass-minus search" onClick={handlOpenSearchBar}></i>}
-            {/* <i className="fa-solid fa-lg fa-magnifying-glass-plus search" onClick={handlOpenSearchBar}></i> */}
             <input className='calendar' type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)}/>
             <i className="fa-solid fa-plus fa-xl add" onClick={handleShowForm}></i>
           </div>}
