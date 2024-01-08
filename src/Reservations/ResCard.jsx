@@ -4,7 +4,7 @@ import { EditContext } from '../ToggleEdit/ToggleEdit';
 import { formatDate } from '../utils';
 
 export default function ResCard({res, deleteReservation, setResToEdit, setShowForm}) {
-
+  console.log(formatDate(res.date))
   const {edit, setEdit} = useContext(EditContext)
 
   const [showNotes, setShowNotes] = useState(false)
