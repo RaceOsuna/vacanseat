@@ -30,7 +30,7 @@ export default function Reservations({ resData, selectedDate, deleteReservation,
         <input autoFocus type="text" name="searchbar" value={searchParams} onChange={(e) => setSearchParams(e.target.value)}/>
         <button onClick={() => setSearchParams('')}>clear</button>
       </div>}
-      {displayReservations}
+      {!displayReservations.length ? <p className='no-res-banner'>No Reservations</p> : displayReservations}
     </div>
   )
 }
