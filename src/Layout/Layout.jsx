@@ -27,7 +27,7 @@ export default function Header({children, selectedDate, setSelectedDate, setShow
     <div className='layout'>
       <nav> 
           <div className='logo'>
-            <h2>Grande Station</h2>
+            <h2>VacanSeat</h2>
           </div>
           {!showForm && <div className='nav-items'>
             {!openSearchBar && <i className="fa-solid fa-xl fa-magnifying-glass search" onClick={handlOpenSearchBar}></i>}
