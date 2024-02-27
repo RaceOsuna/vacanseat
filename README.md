@@ -18,12 +18,25 @@ https://github.com/RaceOsuna/vacanseat/assets/119973475/85efa433-3f24-4dd9-83f3-
 
 https://github.com/RaceOsuna/vacanseat/assets/119973475/0239314c-0670-47cb-827f-4ba1439fc852
 
+## Install
+
+In your terminal...
+
+- clone down this repo to your local machine `git clone git@github.com:RaceOsuna/vacanseat.git`
+- cd into the repository `cd vacanseat`
+- run command `npm install`
+- run command `npm run dev`
+
 ## Tech Stack
 - JavaScript
 - HTML
 - CSS
 - React
 - Firebase
+
+## Contributors
+
+<p><a href="https://www.linkedin.com/in/race-osuna-17a827267/">Race Osuna</a>
 
 
 
